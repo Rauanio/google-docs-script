@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+     <h2>Ввод данных для проверки</h2>
+    <form id="form">
+      <label>Правильное написание слова:</label><br>
+      <input type="text" id="correctWord" required><br>
+      <label>Часть слова для поиска:</label><br>
+      <input type="text" id="partWord" required><br>
+      <label>Префикс (опционально):</label><br>
+      <input type="text" id="prefix"><br>
+      <label>Суффикс (опционально):</label><br>
+      <input type="text" id="suffix"><br><br>
+      <button type="button" onclick="submitForm()">Проверить</button>
+    </form>
+    <script>
+      function submitForm() {
+        google.script.run.processData(
+          document.getElementById('correctWord').value,
+          document.getElementById('partWord').value,
+          document.getElementById('prefix').value,
+          document.getElementById('suffix').value
+        );
+        google.script.host.close();
+      }
+    </script>
+  </body>
+</html>
